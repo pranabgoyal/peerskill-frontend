@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile • Peer-to-Peer Skill Exchange</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo"><a href="index.html">Peer-to-Peer Skill Exchange</a></div>
+        <nav class="nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="#" class="logout-link">Logout</a>
+            <div class="theme-toggle">🌓</div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-wrapper">
+            <div class="auth-card">
+                <h1>Edit Your Profile</h1>
+                <p>Update your details and skills.</p>
+
+                <form data-edit-profile>
+                    <div class="field" style="text-align:center;">
+                        <label style="margin-bottom:12px; display:block;">Profile Avatar</label>
+                        <div class="avatar-grid" id="editAvatarGrid">
+                            <!-- Populated by JS -->
+                        </div>
+                        <input type="hidden" id="selectedAvatar">
+                    </div>
+
+                    <div class="field">
+                        <label>Name</label>
+                        <input type="text" name="name" id="editName" placeholder="Your full name" required>
+                    </div>
+                    <div class="field">
+                        <label>College Email (Read-only)</label>
+                        <input type="email" name="email" id="editEmail" readonly
+                            style="background:#f1f5f9; cursor:not-allowed;">
+                    </div>
+                    <div class="field">
+                        <label>Contact Number</label>
+                        <input type="tel" name="contact" id="editContact" placeholder="e.g. +91 98765..." required>
+                    </div>
+
+                    <!-- Dropdowns Row -->
+                    <div style="display:flex; gap:16px;">
+                        <div class="field" style="flex:1">
+                            <label>Year</label>
+                            <select name="studyYear" id="editYear" required>
+                                <option value="" disabled>Select Year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                                <option value="5th Year">5th Year</option>
+                            </select>
+                        </div>
+                        <div class="field" style="flex:1">
+                            <label>Branch</label>
+                            <select name="branch" id="editBranch" required>
+                                <option value="" disabled>Select Branch</option>
+                                <option value="CSE">CSE</option>
+                                <option value="ECE">ECE</option>
+                                <option value="ME">ME</option>
+                                <option value="CE">CE</option>
+                                <option value="BBA">BBA</option>
+                                <option value="BCA">BCA</option>
+                                <option value="Design">Design</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>What can you teach?</label>
+                        <div class="tag-container" id="teach-container" onclick="focusInput('teach-input')">
+                            <input type="text" class="tag-input" id="teach-input"
+                                placeholder="Type skill & press Enter">
+                        </div>
+                        <p style="font-size:0.8rem; color:#888; margin-top:4px">Press Enter or Comma to add a tag</p>
+                    </div>
+                    <div class="field">
+                        <label>What do you want to learn?</label>
+                        <div class="tag-container" id="learn-container" onclick="focusInput('learn-input')">
+                            <input type="text" class="tag-input" id="learn-input"
+                                placeholder="Type skill & press Enter">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width:100%;margin-top:10px;">Save
+                        Changes</button>
+                    <a href="dashboard.html" class="btn btn-secondary"
+                        style="width:100%;margin-top:10px;text-align:center;display:block;text-decoration:none;">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        © 2025 Peer-to-Peer Skill Exchange.
+    </footer>
+
+    <!-- ⚙️ CONFIG (First) -->
+    <script src="config.js"></script>
+
+    <!-- 🔽 EDIT PROFILE SCRIPT -->
+    <!-- Logic moved to script.js -->
+    <script></script>
+</body>
+
+</html>

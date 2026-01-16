@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard • Peer-to-Peer Skill Exchange</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Prevent Flash of Light Mode
+    if (localStorage.getItem("psx_theme") === "dark") document.body.classList.add("dark")
+  </script>
+  <script defer src="script.js?v=4"></script>
+</head>
+
+<body id="dashboard-page">
+  <header class="header">
+    <div class="logo"><a href="index.html">Peer-to-Peer Skill Exchange</a></div>
+    <nav class="nav">
+      <a href="index.html#features">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="admin.html">Admin</a>
+      <a href="#" class="logout-link">Logout</a>
+      <div class="theme-toggle">🌓</div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="dashboard-main" style="max-width:1200px; margin:0 auto; padding:30px 20px;">
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+        <h1 style="margin:0; font-size:2rem;">Dashboard</h1>
+        <div style="color:#64748b; font-size:0.95rem;">Welcome back to PeerSkill</div>
+      </div>
+
+      <!-- Top Stats / Profile Row -->
+      <div class="dash-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+
+        <!-- Profile Card -->
+        <section class="profile-card" style="padding:0; overflow:hidden;">
+          <div style="padding:24px; background:white;">
+            <div class="profile-top" style="margin-bottom:0px;">
+              <div style="flex:1">
+                <div class="profile-name" id="dashName">
+                  <div class="skeleton skeleton-text" style="width:180px; height:1.4rem;"></div>
+                </div>
+                <div class="profile-meta" id="dashMeta" style="margin-bottom:10px;">
+                  <div class="skeleton skeleton-text" style="width:120px;"></div>
+                </div>
+                <a href="edit-profile.html" class="btn btn-secondary" style="font-size:0.8rem; padding:6px 14px;">Edit
+                  Profile</a>
+              </div>
+              <div style="text-align:right">
+                <img id="dashAvatar" src="profile_pictures/bot.png"
+                  style="width:70px;height:70px;border-radius:50%;object-fit:cover;border:2px solid #eee;">
+              </div>
+            </div>
+          </div>
+          <div
+            style="background:#f8fafc; padding:20px; border-top:1px solid #f1f5f9; display:flex; justify-content:space-between;">
+            <div>
+              <div class="profile-section-title">Teaching</div>
+              <div id="teachTags" class="skills-tags" style="justify-content:flex-start"></div>
+            </div>
+            <div>
+              <div class="profile-section-title">Learning</div>
+              <div id="learnTags" class="skills-tags" style="justify-content:flex-start"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Points & Actions -->
+        <section class="card" style="display:flex; flex-direction:row; padding:0; overflow:hidden; text-align:left;">
+          <div style="flex:1; padding:30px; display:flex; flex-direction:column; justify-content:center;">
+            <h3 style="margin-top:0;">Skill Points</h3>
+            <div class="points-display" id="dashBigPoints"
+              style="font-size:3rem; font-weight:800; color:#14b8a6; line-height:1;">
+              <div class="skeleton skeleton-text" style="width:60px; height:2rem;"></div>
+            </div>
+            <div class="small-muted" style="margin-top:6px;">Target: 100 Pts</div>
+          </div>
+          <div
+            style="flex:1.2; padding:30px; background:#f0fdfa; border-left:1px solid #ccfbf1; display:flex; flex-direction:column; justify-content:center;">
+            <h4 style="margin:0 0 10px;">Raise Request</h4>
+            <input type="text" id="tokenInput" class="form-input" placeholder="What do you need help with?"
+              style="margin-bottom:10px; background:white;">
+            <button class="btn btn-primary" id="raiseTokenBtn" style="width:100%;">Post Request</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Main Content Grid -->
+      <div style="display:grid; grid-template-columns: 2fr 1fr; gap:30px; margin-top:30px;">
+
+        <!-- Left Column -->
+        <div style="display:flex; flex-direction:column; gap:30px;">
+
+          <!-- Recommendations -->
+          <section class="peer-reco-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+              <h3>Recommended For You</h3>
+              <span class="small-muted">Based on your "Learn" tags</span>
+            </div>
+            <div id="recoContainer">
+              <div class="skeleton skeleton-card" style="height:80px"></div>
+            </div>
+          </section>
+
+          <!-- Available Peers -->
+          <section class="card" style="text-align:left;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+              <h3>Explore Peers</h3>
+              <input type="text" id="peerSearch" class="form-input" placeholder="Search name, skill..."
+                style="width:200px; padding:6px 12px;">
+            </div>
+            <div id="randomPeersList" style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+              <div class="skeleton skeleton-card" style="height:70px"></div>
+              <div class="skeleton skeleton-card" style="height:70px"></div>
+            </div>
+          </section>
+
+          <!-- Community Requests -->
+          <section class="card" style="text-align:left;">
+            <h3>Community Requests</h3>
+            <div id="communityRequestsList"
+              style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:16px; margin-top:16px;"></div>
+          </section>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div style="display:flex; flex-direction:column; gap:24px;">
+
+          <!-- Upcoming Sessions -->
+          <div class="sidebar-card">
+            <h3>📅 Upcoming Sessions</h3>
+            <div id="upcomingList">
+              <div class="skeleton skeleton-card" style="height:60px"></div>
+            </div>
+          </div>
+
+          <!-- Leaderboard -->
+          <div class="sidebar-card">
+            <h3>🏆 Top Contributors</h3>
+            <div class="leaderboard-list" id="leaderboardList">
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+
+
+  <!-- RATING MODAL -->
+  <div class="modal-overlay" id="ratingModal">
+    <div class="modal" style="text-align:center;">
+      <div class="modal-header">
+        <div class="modal-title">Rate Session</div>
+        <div class="modal-close" onclick="closeRatingModal()">×</div>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="ratePeerEmail">
+        <p style="margin-bottom:10px; color:#64748b;">How was your session with <b id="ratePeerName">Peer</b>?</p>
+
+        <div class="star-rating">
+          <div class="star" onclick="setRating(1)">★</div>
+          <div class="star" onclick="setRating(2)">★</div>
+          <div class="star" onclick="setRating(3)">★</div>
+          <div class="star" onclick="setRating(4)">★</div>
+          <div class="star" onclick="setRating(5)">★</div>
+        </div>
+        <input type="hidden" id="selectedRating" value="0">
+
+        <button class="btn btn-primary" onclick="submitRating()" style="width:100%">Submit Feedback</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHEDULING MODAL -->
+  <div class="modal-overlay" id="scheduleModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Schedule Session</div>
+        <div class="modal-close" onclick="closeModal()">×</div>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="modalPeerEmail">
+
+        <div class="form-group">
+          <label class="form-label">Session With</label>
+          <input type="text" class="form-input" id="modalPeerName" readonly style="opacity:0.7">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Session Type</label>
+          <select class="form-input" id="modalTopic">
+            <option>General Mentorship</option>
+            <option>Project Help</option>
+            <option>Exam Prep</option>
+            <option>Mock Interview</option>
+            <option>Casual Chat</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Date</label>
+          <input type="date" class="form-input" id="modalDate">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Time</label>
+          <input type="time" class="form-input" id="modalTime">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmSchedule()">Confirm Schedule</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    © 2025 Peer-to-Peer Skill Exchange.
+  </footer>
+
+  <!-- ⚙️ CONFIG -->
+  <script src="config.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Logic handled in script.js to avoid duplication
+      const userEmail = localStorage.getItem("userEmail")
+      if (!userEmail) {
+        window.location.href = "login.html"
+      }
+    })
+  </script>
+</body>
+
+</html>

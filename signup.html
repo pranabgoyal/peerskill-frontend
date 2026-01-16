@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up • Peer-to-Peer Skill Exchange</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo"><a href="index.html">Peer-to-Peer Skill Exchange</a></div>
+    <nav class="nav">
+      <a href="index.html#features">Features</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="login.html">Login</a>
+      <div class="theme-toggle">🌓</div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        <h1>Create your account</h1>
+        <p>Tell us who you are and what you want to learn or teach.</p>
+
+        <form id="signupForm">
+          <div class="field" style="text-align:center;">
+            <label style="margin-bottom:12px; display:block;">Select Your Avatar</label>
+            <div class="avatar-grid" id="signupAvatarGrid">
+              <!-- Populated by JS -->
+            </div>
+            <input type="hidden" id="selectedAvatar" value="profile_pictures/bot.png">
+          </div>
+
+          <div class="field">
+            <label>Full Name</label>
+            <input type="text" id="name" placeholder="John Doe" required>
+          </div>
+          <div class="field">
+            <label>College Email</label>
+            <input type="email" name="email" placeholder="you@college.edu" required>
+          </div>
+          <div class="field">
+            <label>Contact Number (for peer connections)</label>
+            <input type="tel" name="contact" placeholder="e.g. +91 98765..." required>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create a password" required>
+          </div>
+
+          <!-- Dropdowns Row -->
+          <div style="display:flex; gap:16px;">
+            <div class="field" style="flex:1">
+              <label>Year</label>
+              <select name="studyYear" required>
+                <option value="" disabled selected>Select Year</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+                <option value="5th Year">5th Year</option>
+              </select>
+            </div>
+            <div class="field" style="flex:1">
+              <label>Branch</label>
+              <select name="branch" required>
+                <option value="" disabled selected>Select Branch</option>
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="ME">ME</option>
+                <option value="CE">CE</option>
+                <option value="BBA">BBA</option>
+                <option value="BCA">BCA</option>
+                <option value="Design">Design</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>What can you teach?</label>
+            <div class="tag-input-group">
+              <div class="tag-container" id="teach-container" onclick="focusInput('teach-input')">
+                <input type="text" class="tag-input" id="teach-input" placeholder="Type skill">
+              </div>
+              <button type="button" class="btn btn-secondary"
+                onclick="addTagFromInput('teach-container', 'teach-input')"
+                style="padding:0 20px; font-size:1.4rem; line-height:1; color:#14b8a6;" title="Add Tag">+</button>
+            </div>
+            <p style="font-size:0.8rem; color:#888; margin-top:4px">Type a skill and click + or press Enter</p>
+          </div>
+          <div class="field">
+            <label>What do you want to learn?</label>
+            <div class="tag-input-group">
+              <div class="tag-container" id="learn-container" onclick="focusInput('learn-input')">
+                <input type="text" class="tag-input" id="learn-input" placeholder="Type skill">
+              </div>
+              <button type="button" class="btn btn-secondary"
+                onclick="addTagFromInput('learn-container', 'learn-input')"
+                style="padding:0 20px; font-size:1.4rem; line-height:1; color:#14b8a6;" title="Add Tag">+</button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:10px;">Create Account</button>
+        </form>
+
+        <p style="margin-top:12px;font-size:0.86rem;">Already have an account? <a href="login.html">Sign in</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © 2025 Peer-to-Peer Skill Exchange.
+  </footer>
+
+  <!-- ⚙️ CONFIG (First) -->
+  <script src="config.js"></script>
+
+  <script>
+    const AVATARS = [
+      { img: "profile_pictures/Clove_icon.webp", sound: "avatar_sounds/Clove.mpeg" },
+      { img: "profile_pictures/Iso_icon.webp", sound: "avatar_sounds/Iso.mpeg" },
+      { img: "profile_pictures/Omen_icon.webp", sound: "avatar_sounds/Omen.mpeg" },
+      { img: "profile_pictures/Phoenix_icon.webp", sound: "avatar_sounds/Phoenix.mpeg" },
+      { img: "profile_pictures/Raze_icon.webp", sound: "avatar_sounds/Raze.mpeg" },
+      { img: "profile_pictures/Reyna_icon.webp", sound: "avatar_sounds/Reyna.mpeg" },
+      { img: "profile_pictures/bot.png", sound: "avatar_sounds/Bot.mp3" }
+    ]
+
+    // Setup Avatar Grid
+    const grid = document.getElementById("signupAvatarGrid")
+    const hiddenInput = document.getElementById("selectedAvatar")
+
+    // Audio Manager
+    let currentAudio = null
+
+    function playSound(path) {
+      if (currentAudio) {
+        currentAudio.pause()
+        currentAudio.currentTime = 0
+      }
+      currentAudio = new Audio(path)
+      currentAudio.volume = 0.75 // Reduced by 25%
+      currentAudio.play().catch(e => console.log("Audio play failed (user interaction needed first?):", e))
+    }
+
+    AVATARS.forEach(item => {
+      const img = document.createElement("img")
+      img.src = item.img
+      img.className = "avatar-option"
+
+      // Default selection (Bot)
+      if (item.img.includes("bot.png")) {
+        img.classList.add("selected")
+      }
+
+      img.onclick = () => {
+        document.querySelectorAll(".avatar-option").forEach(el => el.classList.remove("selected"))
+        img.classList.add("selected")
+        hiddenInput.value = item.img
+
+        // Play Sound
+        playSound(item.sound)
+      }
+      grid.appendChild(img)
+    })
+
+    // Play Bot Sound on Load
+    // Note: Browsers block autoplay without interaction. 
+    // If this fails, it's expected behavior, but we try anyway.
+    window.addEventListener('load', () => {
+      const bot = AVATARS.find(a => a.img.includes("bot.png"))
+      if (bot) playSound(bot.sound)
+    })
+  </script>
+
+  <!-- 🔽 DATABASE SIGNUP SCRIPT -->
+  <!-- 🔽 DATABASE SIGNUP SCRIPT -->
+  <!-- Logic moved to script.js -->
+  <script>
+    // Only UI helpers remain here to avoid moving too many DOM-specific utilities
+    // Tag Input Logic
+    function setupTagInput(containerId, inputId) {
+      const container = document.getElementById(containerId)
+      const input = document.getElementById(inputId)
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === ",") {
+          e.preventDefault()
+          addTagFromInput(containerId, inputId)
+        } else if (e.key === "Backspace" && !input.value) {
+          const tags = container.querySelectorAll(".tag")
+          if (tags.length > 0) {
+            tags[tags.length - 1].remove()
+          }
+        }
+      })
+
+      // Auto-add on blur (focus out)
+      input.addEventListener("blur", () => {
+        addTagFromInput(containerId, inputId)
+      })
+    }
+
+    function addTagFromInput(containerId, inputId) {
+      const container = document.getElementById(containerId)
+      const input = document.getElementById(inputId)
+      const val = input.value.trim()
+      if (val) {
+        addTag(container, input, val)
+        input.value = ""
+      }
+    }
+
+    function addTag(container, input, text) {
+      const tag = document.createElement("div")
+      tag.className = "tag"
+      tag.innerHTML = `${text} <span onclick="this.parentElement.remove()">×</span>`
+      container.insertBefore(tag, input)
+    }
+
+    function focusInput(id) {
+      document.getElementById(id).focus()
+    }
+
+    // Init
+    setupTagInput("teach-container", "teach-input")
+    setupTagInput("learn-container", "learn-input")
+  </script>
+</body>
+
+</html>

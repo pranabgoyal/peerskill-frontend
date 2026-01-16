@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login • Peer-to-Peer Skill Exchange</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo"><a href="index.html">Peer-to-Peer Skill Exchange</a></div>
+    <nav class="nav">
+      <a href="index.html#features">Features</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="signup.html">Sign Up</a>
+      <div class="theme-toggle">🌓</div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        <h1>Welcome back</h1>
+        <p>Sign in to continue learning and teaching with your peers.</p>
+
+        <form id="loginForm">
+          <div class="field">
+            <label>College Email</label>
+            <input type="email" id="email" name="email" placeholder="you@college.edu" required>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password" id="password" name="password" placeholder="Your password" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:10px;">Sign In</button>
+        </form>
+
+        <p style="margin-top:12px;font-size:0.86rem;">New here? <a href="signup.html">Create an account</a></p>
+
+        <!-- Debugging Tool -->
+        <div style="margin-top: 20px; text-align: center; border-top: 1px solid #eee; padding-top: 10px;">
+          <button type="button" id="testServerBtn"
+            style="background:#eee; color:#333; border:none; padding:5px 10px; border-radius:4px; font-size:0.8rem; cursor:pointer;">
+            Test Server Connection
+          </button>
+          <div id="serverStatus" style="font-size:0.8rem; margin-top:5px; color:#666;"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © 2025 Peer-to-Peer Skill Exchange.
+  </footer>
+
+  <!-- ⚙️ CONFIG -->
+  <script src="config.js"></script>
+
+  <!-- 🔽 LOGIN SCRIPT (USER + ADMIN) -->
+  <!-- 🔽 LOGIN SCRIPT (USER + ADMIN) -->
+  <!-- Logic moved to script.js -->
+  <script>
+    // Debug: Test Server Connection
+    const testBtn = document.getElementById("testServerBtn")
+    const statusDiv = document.getElementById("serverStatus")
+
+    if (testBtn) {
+      testBtn.addEventListener("click", () => {
+        statusDiv.textContent = "Checking..."
+        statusDiv.style.color = "#666"
+        const API_BASE_URL = window.API_BASE_URL || "http://localhost:5000"
+
+        fetch(`${API_BASE_URL}/`)
+          .then(res => {
+            if (res.ok) return res.text()
+            throw new Error("Status: " + res.status)
+          })
+          .then(text => {
+            statusDiv.innerHTML = `✅ <b>Online:</b> ${text}`
+            statusDiv.style.color = "green"
+          })
+          .catch(err => {
+            statusDiv.innerHTML = `❌ <b>Failed:</b> ${err.message}. <br>Check config.js or if Server is running.`
+            statusDiv.style.color = "red"
+          })
+      })
+    }
+  </script>
+
+</body>
+
+</html>
