@@ -161,9 +161,11 @@
     }
 
     body.dark .role-badge {
-      background: #1e293b;
-      color: #94a3b8;
-      border-color: #334155;
+      background: #334155;
+      /* Lighter background for contrast */
+      color: #f1f5f9;
+      /* Near white text */
+      border-color: #475569;
     }
 
     /* Scrollbar Styling - THINNER & CLEANER */
@@ -323,23 +325,14 @@
       body.classList.add("dark")
     }
 
-    themeToggle.addEventListener("click", () => {
-      body.classList.toggle("dark")
-      const theme = body.classList.contains("dark") ? "dark" : "light"
-      localStorage.setItem("psx_theme", theme)
-    })
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark")
+        const theme = body.classList.contains("dark") ? "dark" : "light"
+        localStorage.setItem("psx_theme", theme)
+      })
+    }
   </script>
-</body>
-
-</html>
-</main>
-
-<!-- ⚙️ CONFIG -->
-<script src="config.js"></script>
-
-<script>
-  // Logic moved to script.js
-</script>
 </body>
 
 </html>
