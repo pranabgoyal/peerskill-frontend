@@ -1708,8 +1708,8 @@ body.dark .profile-footer-stats {
   gap: 12px;
   padding: 10px 4px 10px 0;
   width: 100%;
-  max-height: 500px;
-  /* Reduced to 500px to align with Compact Sidebar */
+  max-height: 480px;
+  /* Reduced to 480px to align with Ultra-Compact Sidebar */
   overflow-y: auto;
 }
 
@@ -1833,6 +1833,11 @@ body.dark .profile-section-title {
 }
 
 /* COMPACT SIDEBAR ITEMS */
+.sidebar-card {
+  padding: 12px 16px !important;
+  /* Reduced padding from default card */
+}
+
 .session-item {
   padding: 6px 8px;
   /* Ultra compact */
@@ -1911,11 +1916,21 @@ body.dark .profile-section-title {
   object-fit: cover;
 }
 
+/* Updated Rank Info for Right Alignment */
 .rank-info {
   display: flex;
-  flex-direction: column;
-  gap: 0;
+  flex-direction: row;
+  /* Horizontal */
+  justify-content: space-between;
+  /* Space out Name and Points */
+  align-items: center;
+  flex: 1;
+  /* Take up remaining space */
   line-height: 1.1;
+}
+
+.rank-points {
+  text-align: right;
 }
 
 .rank-name {
