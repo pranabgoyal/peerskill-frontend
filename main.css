@@ -1618,7 +1618,6 @@ body.dark .toast {
   /* Maintain vertical symmetry */
   gap: 30px;
   margin-top: 30px;
-  align-items: start;
 }
 
 @media (max-width: 900px) {
@@ -1632,6 +1631,7 @@ body.dark .toast {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  height: 100%;
 }
 
 /* Action Card Row (Points + Request) */
@@ -1716,11 +1716,19 @@ body.dark .profile-footer-stats {
   padding: 10px 4px 10px 0;
   width: 100%;
   /* Align with Right Column */
-  max-height: 400px;
+  flex: 1;
+  min-height: 0;
+  /* Critical for flex scrolling */
   overflow-y: auto;
-  align-content: start;
-  /* Prevent Grid Stretching */
-  height: auto !important;
+  /* Prevent Grid Stretching - REMOVED to allow fill */
+  height: auto;
+}
+
+.peer-reco-card {
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 /* Individual Card (Landscape Profile) */
