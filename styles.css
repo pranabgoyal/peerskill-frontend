@@ -1596,6 +1596,21 @@ body.dark .toast {
 
 /* --- NEW DASHBOARD LAYOUT (Refined) --- */
 
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  /* Profile gets more space */
+  gap: 30px;
+  align-items: stretch;
+  /* Force equal height */
+}
+
+@media (max-width: 900px) {
+  .dash-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .main-dashboard-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -1619,44 +1634,65 @@ body.dark .toast {
 /* Action Card Row (Points + Request) */
 .action-card-row {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  /* Stacked internally for better mobile */
   padding: 0;
   overflow: hidden;
-  text-align: left;
+  height: 100%;
+  /* Fill grid cell */
+  justify-content: center;
+}
+
+@media (min-width: 600px) {
+  .action-card-row {
+    flex-direction: row;
+    /* Side-by-side on desktop if needed, or stick to column?  */
+    /* Actually, looking at the screenshot, the Points/Request card is split Left/Right.
+           Let's keep it row but ensure flex basis is correct */
+    flex-direction: row;
+  }
 }
 
 .action-card-left {
   flex: 1;
-  padding: 30px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-right: 1px solid #f1f5f9;
+  /* Separator */
 }
 
 .action-card-right {
-  flex: 1.2;
-  padding: 30px;
-  background: #f8fafc;
-  /* Subtle grey instead of mint */
-  border-left: 1px solid #f1f5f9;
+  flex: 1.5;
+  /* More space for the form */
+  padding: 24px;
+  background: white;
+  /* Clean white */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+/* Dark mode for Action Card */
+body.dark .action-card-left {
+  border-right-color: #1e293b;
+}
+
 body.dark .action-card-right {
-  background: #162032;
-  /* Slightly lighter dark */
-  border-color: #1e293b;
+  background: #111827;
+  /* No special bg, just dark */
 }
 
 /* Profile Alignment */
 .profile-footer-stats {
   background: #f8fafc;
-  padding: 20px;
+  padding: 20px 24px;
+  /* Match header padding */
   border-top: 1px solid #f1f5f9;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 body.dark .profile-footer-stats {
@@ -1669,16 +1705,17 @@ body.dark .profile-footer-stats {
   display: flex;
   overflow-x: auto;
   gap: 16px;
-  padding: 10px 4px 24px 4px;
-  /* Bottom padding for scrollbar */
+  padding: 4px 4px 16px 4px;
+  /* Reduced bottom padding */
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Custom Slim Scrollbar for Carousel */
+/* Custom Slim Scrollbar for Carousel - MATCH ADMIN STYLE */
 #recoContainer::-webkit-scrollbar {
   height: 6px;
+  /* Thin */
 }
 
 #recoContainer::-webkit-scrollbar-track {
