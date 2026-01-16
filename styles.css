@@ -1772,6 +1772,12 @@ body.dark .profile-footer-stats {
   color: #64748b;
 }
 
+/* Year/Branch Styling */
+.peer-reco-row .peer-reco-main div:nth-child(3) {
+  font-size: 0.75rem !important;
+  color: #94a3b8;
+}
+
 /* Dark Mode for Reco Cards */
 body.dark .peer-reco-row {
   background: #1e293b;

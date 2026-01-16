@@ -400,8 +400,9 @@ function loadRecommendations(email, baseUrl) {
                <div class="peer-reco-main">
                  <div style="font-weight:600">${m.name}</div>
                  <div style="font-size:0.8rem; color:#666">Teaches: ${(m.teach || []).join(", ")}</div>
-                 <button class="btn btn-primary" style="margin-top:6px; font-size:0.75rem" onclick="openScheduleModal('${m.email}','${m.name}')">Schedule</button>
+                 <div style="font-size:0.75rem; color:#94a3b8; margin-top:2px">${m.studyYear || 'Student'} • ${m.branch || 'N/A'}</div>
                </div>
+               <button class="btn btn-primary" style="margin-left:auto; padding:6px 12px; font-size:0.8rem; width:auto; border-radius:8px;" onclick="openScheduleModal('${m.email}','${m.name}')">Schedule</button>
             `
         c.appendChild(d)
       })
