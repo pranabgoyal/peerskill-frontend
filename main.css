@@ -1820,6 +1820,22 @@ body.dark .peer-reco-row:hover {
   border-color: #475569;
 }
 
+/* CRITICAL DARK MODE TEXT FIXES */
+body.dark .peer-reco-row .peer-reco-main div:first-child {
+  color: #f1f5f9 !important;
+  /* Name - White */
+}
+
+body.dark .peer-reco-row .peer-reco-main div:nth-child(2) {
+  color: #cbd5e1 !important;
+  /* Teaches - Light Gray */
+}
+
+body.dark .peer-reco-row .peer-reco-main div:nth-child(3) {
+  color: #94a3b8 !important;
+  /* Meta - Muted Slate */
+}
+
 /* Align Left Utility */
 .align-left-card {
   text-align: left;
