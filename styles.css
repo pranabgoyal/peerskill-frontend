@@ -1807,15 +1807,14 @@ body.dark .peer-reco-row:hover {
   /* Stretch children */
 }
 
-/* Grids for Arrays */
+/* Grids for Arrays - Converted to Flex List for Alignment */
 .peers-grid-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  /* Increased from default */
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* Match Right Tile */
 }
 
-/* Bottom Tiles Alignment */
 /* Bottom Tiles Alignment */
 #randomPeersList,
 #communityRequestsList {
@@ -1824,7 +1823,7 @@ body.dark .peer-reco-row:hover {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   /* Consistent gap */
   padding: 4px;
   /* Internal padding for shadows */
@@ -1837,7 +1836,8 @@ body.dark .peer-reco-row:hover {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 12px;
+  padding: 10px 12px;
+  /* Reduced to match Right Tile */
   background: white;
   border: 1px solid #f1f5f9;
   border-radius: 12px;
