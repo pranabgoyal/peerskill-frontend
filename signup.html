@@ -123,117 +123,12 @@
   <!-- ⚙️ CONFIG (First) -->
   <script src="config.js"></script>
 
-  <script>
-    const AVATARS = [
-      { img: "profile_pictures/Clove_icon.webp", sound: "avatar_sounds/Clove.mpeg" },
-      { img: "profile_pictures/Iso_icon.webp", sound: "avatar_sounds/Iso.mpeg" },
-      { img: "profile_pictures/Omen_icon.webp", sound: "avatar_sounds/Omen.mpeg" },
-      { img: "profile_pictures/Phoenix_icon.webp", sound: "avatar_sounds/Phoenix.mpeg" },
-      { img: "profile_pictures/Raze_icon.webp", sound: "avatar_sounds/Raze.mpeg" },
-      { img: "profile_pictures/Reyna_icon.webp", sound: "avatar_sounds/Reyna.mpeg" },
-      { img: "profile_pictures/bot.png", sound: "avatar_sounds/Bot.mp3" }
-    ]
 
-    // Setup Avatar Grid
-    const grid = document.getElementById("signupAvatarGrid")
-    const hiddenInput = document.getElementById("selectedAvatar")
-
-    // Audio Manager
-    let currentAudio = null
-
-    function playSound(path) {
-      if (currentAudio) {
-        currentAudio.pause()
-        currentAudio.currentTime = 0
-      }
-      currentAudio = new Audio(path)
-      currentAudio.volume = 0.75 // Reduced by 25%
-      currentAudio.play().catch(e => console.log("Audio play failed (user interaction needed first?):", e))
-    }
-
-    AVATARS.forEach(item => {
-      const img = document.createElement("img")
-      img.src = item.img
-      img.className = "avatar-option"
-
-      // Default selection (Bot)
-      if (item.img.includes("bot.png")) {
-        img.classList.add("selected")
-      }
-
-      img.onclick = () => {
-        document.querySelectorAll(".avatar-option").forEach(el => el.classList.remove("selected"))
-        img.classList.add("selected")
-        hiddenInput.value = item.img
-
-        // Play Sound
-        playSound(item.sound)
-      }
-      grid.appendChild(img)
-    })
-
-    // Play Bot Sound on Load
-    // Note: Browsers block autoplay without interaction. 
-    // If this fails, it's expected behavior, but we try anyway.
-    window.addEventListener('load', () => {
-      const bot = AVATARS.find(a => a.img.includes("bot.png"))
-      if (bot) playSound(bot.sound)
-    })
-  </script>
 
   <!-- 🔽 DATABASE SIGNUP SCRIPT -->
   <!-- 🔽 DATABASE SIGNUP SCRIPT -->
   <!-- Logic moved to script.js -->
-  <script>
-    // Only UI helpers remain here to avoid moving too many DOM-specific utilities
-    // Tag Input Logic
-    function setupTagInput(containerId, inputId) {
-      const container = document.getElementById(containerId)
-      const input = document.getElementById(inputId)
 
-      input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === ",") {
-          e.preventDefault()
-          addTagFromInput(containerId, inputId)
-        } else if (e.key === "Backspace" && !input.value) {
-          const tags = container.querySelectorAll(".tag")
-          if (tags.length > 0) {
-            tags[tags.length - 1].remove()
-          }
-        }
-      })
-
-      // Auto-add on blur (focus out)
-      input.addEventListener("blur", () => {
-        addTagFromInput(containerId, inputId)
-      })
-    }
-
-    function addTagFromInput(containerId, inputId) {
-      const container = document.getElementById(containerId)
-      const input = document.getElementById(inputId)
-      const val = input.value.trim()
-      if (val) {
-        addTag(container, input, val)
-        input.value = ""
-      }
-    }
-
-    function addTag(container, input, text) {
-      const tag = document.createElement("div")
-      tag.className = "tag"
-      tag.innerHTML = `${text} <span onclick="this.parentElement.remove()">×</span>`
-      container.insertBefore(tag, input)
-    }
-
-    function focusInput(id) {
-      document.getElementById(id).focus()
-    }
-
-    // Init
-    setupTagInput("teach-container", "teach-input")
-    setupTagInput("learn-container", "learn-input")
-  </script>
 </body>
 
 </html>
