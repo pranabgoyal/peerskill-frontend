@@ -1714,9 +1714,9 @@ body.dark .profile-footer-stats {
   gap: 12px;
   padding: 10px 4px 10px 0;
   width: 100%;
-  max-height: 500px;
-  /* Reduced to 500px to align with Compact Sidebar */
-  overflow-y: auto;
+  /* height: auto; max-height removed to allow full expansion */
+  height: auto;
+  overflow: visible;
 }
 
 /* Individual Card (Landscape Profile) */
