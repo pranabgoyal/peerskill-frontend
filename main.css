@@ -445,10 +445,14 @@ body.dark .card,
 body.dark .profile-card,
 body.dark .points-card,
 body.dark .token-card,
-body.dark .peer-reco-card {
-  background: #0f172a;
-  border-color: #1e293b;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+body.dark .peer-reco-card,
+body.dark .sidebar-card,
+body.dark .action-card-right {
+  background: #1e293b;
+  /* Unified lighter dark for cards */
+  border-color: #334155;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  /* Softer, spread shadow */
 }
 
 .profile-top {
@@ -1683,12 +1687,12 @@ body.dark .toast {
 
 /* Dark mode for Action Card */
 body.dark .action-card-left {
-  border-right-color: #1e293b;
+  border-right-color: #334155;
 }
 
 body.dark .action-card-right {
-  background: #111827;
-  /* No special bg, just dark */
+  background: #1e293b;
+  /* Match unified card bg */
 }
 
 /* Profile Alignment */
@@ -2212,6 +2216,7 @@ body.dark .scrollable-card::-webkit-scrollbar-thumb {
 .dash-subtitle {
   color: #64748b;
   transition: color 0.3s;
+  font-weight: 500;
 }
 
 body.dark .dash-title {
