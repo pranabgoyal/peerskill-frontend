@@ -2387,6 +2387,104 @@ body.dark .form-input-lg:focus {
   background: #0f172a;
 }
 
-body.dark .action-title {
-  color: #e2e8f0 !important;
+
+/* --- GLOBAL SCROLLBAR POLISH --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 99px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+body.dark ::-webkit-scrollbar-thumb {
+  background-color: #475569;
+}
+
+body.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #64748b;
+}
+
+/* --- INPUT FIELD POLISH --- */
+.form-input,
+.search-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.form-input:focus,
+.search-box:focus {
+  background: white;
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1);
+  outline: none;
+}
+
+/* Dark Mode Inputs */
+body.dark .form-input,
+body.dark .search-box,
+body.dark .points-input {
+  background: #111827;
+  /* Darker than card */
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+body.dark .form-input:focus,
+body.dark .search-box:focus {
+  background: #1e293b;
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.2);
+}
+
+/* --- CARD HOVER POLISH --- */
+.dashboard-card,
+.sidebar-card,
+.users-table-card {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+}
+
+.dashboard-card:hover,
+.sidebar-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.08);
+}
+
+body.dark .dashboard-card:hover,
+body.dark .sidebar-card:hover {
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.4);
+}
+
+/* --- BUTTON SHADOWS --- */
+.btn-primary {
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(20, 184, 166, 0.4);
+}
+
+/* --- TEXT CONTRAST FIX --- */
+/* Ensure learning tags and subtitles are readable */
+.small-muted {
+  color: #64748b;
+}
+
+body.dark .small-muted {
+  color: #94a3b8;
+  /* Lighter in dark mode */
 }
