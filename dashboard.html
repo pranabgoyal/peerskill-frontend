@@ -108,23 +108,9 @@
             </div>
           </section>
 
-          <!-- Available Peers -->
-          <section class="sidebar-card align-left-card">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-              <h3 class="section-accent-text" style="font-size:1.15rem; font-weight:700;">Explore Peers</h3>
-              <input type="text" id="peerSearch" class="form-input" placeholder="Search name, skill..."
-                style="width:200px; padding:6px 12px;">
-            </div>
-            <div id="randomPeersList" class="peers-grid-list">
-              <div class="skeleton skeleton-card" style="height:70px"></div>
-              <div class="skeleton skeleton-card" style="height:70px"></div>
-            </div>
-          </section>
-
-
         </div>
 
-        <!-- Right Sidebar -->
+        <!-- Right Column Top Stack -->
         <div class="right-col-stack">
 
           <!-- Upcoming Sessions -->
@@ -144,13 +130,36 @@
             </div>
           </div>
 
-          <!-- Community Requests (Moved to Right) -->
+        </div>
+      </div>
+
+      <!-- Second Row Grid (Aligned Bottom Tiles) -->
+      <div class="main-dashboard-grid" style="margin-top:20px;">
+
+        <!-- Left Column (Explore) -->
+        <div class="left-col-stack">
+          <!-- Available Peers -->
+          <section class="sidebar-card align-left-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+              <h3 class="section-accent-text" style="font-size:1.15rem; font-weight:700;">Explore Peers</h3>
+              <input type="text" id="peerSearch" class="form-input" placeholder="Search name, skill..."
+                style="width:200px; padding:6px 12px;">
+            </div>
+            <div id="randomPeersList" class="peers-grid-list">
+              <div class="skeleton skeleton-card" style="height:70px"></div>
+              <div class="skeleton skeleton-card" style="height:70px"></div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Column (Requests) -->
+        <div class="right-col-stack">
           <div class="sidebar-card scrollable-card">
             <h3>📢 Community Requests</h3>
             <div id="communityRequestsList" class="requests-list-compact"></div>
           </div>
-
         </div>
+
       </div>
 
     </div>

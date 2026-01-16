@@ -1715,7 +1715,7 @@ body.dark .profile-footer-stats {
   padding: 10px 4px 10px 0;
   width: 100%;
   /* Align with Right Column */
-  max-height: 500px;
+  max-height: 400px;
   overflow-y: auto;
   align-content: start;
   /* Prevent Grid Stretching */
