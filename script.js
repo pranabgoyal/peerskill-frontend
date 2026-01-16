@@ -554,7 +554,7 @@ function fetchAdminRequests(baseUrl) {
       <td>${new Date(r.date).toLocaleDateString()}</td>
       <td>${r.name}</td>
       <td><strong>${r.skill}</strong></td>
-      <td><span class="cat-pill" style="font-size:0.75rem">${r.status}</span></td>
+      <td><span class="status-badge status-${r.status.toLowerCase()}">${r.status}</span></td>
     </tr>`).join("")
   })
 }
