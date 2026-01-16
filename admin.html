@@ -32,20 +32,37 @@
       border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    /* Fixed Table Container */
-    .users-table-container {
+    /* --- REFACTORED TABLE CARD --- */
+    .users-table-card {
       background: white;
       border-radius: 16px;
-      padding: 30px;
-      /* More padding */
+      margin-bottom: 30px;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
       border: 1px solid rgba(0, 0, 0, 0.05);
-      margin-bottom: 30px;
+      overflow: hidden;
+      /* Clip everything */
+      display: flex;
+      flex-direction: column;
+    }
 
-      /* Vertical Scroll Logic */
+    .table-header-row {
+      padding: 24px 30px;
+      background: white;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 20;
+      position: relative;
+    }
+
+    /* The Scrollable Area - NO PADDING */
+    .table-scroll-area {
       max-height: 500px;
       overflow-y: auto;
       overflow-x: auto;
+      position: relative;
+      background: white;
     }
 
     /* Modern Table Styling */
@@ -54,7 +71,6 @@
       border-collapse: separate;
       border-spacing: 0;
       min-width: 800px;
-      /* Ensure it doesn't squish */
     }
 
     th {
@@ -66,11 +82,16 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+
+      /* Sticky Logic */
       border-bottom: 2px solid #e2e8f0;
       position: sticky;
       top: 0;
-      background: white;
+      background: #f8fafc;
+      /* Slightly distinct header bg */
       z-index: 10;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+      /* Subtle depth */
     }
 
     td {
@@ -108,13 +129,16 @@
 
     /* Dark Mode Overrides */
     body.dark .stat-card,
-    body.dark .users-table-container {
+    body.dark .users-table-card,
+    body.dark .table-header-row,
+    body.dark .table-scroll-area {
       background: #111827;
       border-color: #1f2937;
     }
 
     body.dark th {
-      background: #111827;
+      background: #0f172a;
+      /* Slightly darker header */
       color: #94a3b8;
       border-bottom-color: #1f2937;
     }
@@ -137,21 +161,21 @@
     }
 
     /* Scrollbar Styling */
-    .users-table-container::-webkit-scrollbar {
+    .table-scroll-area::-webkit-scrollbar {
       width: 8px;
       height: 8px;
     }
 
-    .users-table-container::-webkit-scrollbar-track {
+    .table-scroll-area::-webkit-scrollbar-track {
       background: transparent;
     }
 
-    .users-table-container::-webkit-scrollbar-thumb {
+    .table-scroll-area::-webkit-scrollbar-thumb {
       background-color: rgba(0, 0, 0, 0.1);
       border-radius: 20px;
     }
 
-    body.dark .users-table-container::-webkit-scrollbar-thumb {
+    body.dark .table-scroll-area::-webkit-scrollbar-thumb {
       background-color: rgba(255, 255, 255, 0.1);
     }
   </style>
@@ -201,81 +225,115 @@
       </div>
 
       <!-- User Management Table -->
-      <div class="users-table-container">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+      <div class="users-table-card">
+        <div class="table-header-row">
           <h2 style="margin:0;">User Management</h2>
           <button class="btn btn-secondary" onclick="location.reload()">Refresh Data</button>
         </div>
 
-        <table id="userManagementTable">
-          <thead>
-            <tr>
-              <th width="60">Avatar</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Points</th>
-              <th>Admin Action</th>
-            </tr>
-          </thead>
-          <tbody id="userTableBody">
-            <tr>
-              <td colspan="6" style="text-align:center; padding:40px; color:#94a3b8;">Loading users...</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-scroll-area">
+          <table id="userManagementTable">
+            <thead>
+              <tr>
+                <th width="60" style="padding-left:30px;">Avatar</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Points</th>
+                <th style="padding-right:30px;">Admin Action</th>
+              </tr>
+            </thead>
+            <tbody id="userTableBody">
+              <tr>
+                <td colspan="6" style="text-align:center; padding:40px; color:#94a3b8;">Loading users...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <!-- Split Layout for Bottom Tables -->
       <div style="display:grid; grid-template-columns: 1fr 1fr; gap:30px;">
         <!-- Skill Requests Section -->
-        <div class="users-table-container" style="margin-bottom:0;">
-          <h2 style="margin-top:0; margin-bottom:20px;">Active Skill Requests</h2>
-          <table id="requestsTable">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Student</th>
-                <th>Skill</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td colspan="4" style="text-align:center; padding:30px;">Loading...</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="users-table-card">
+          <div class="table-header-row">
+            <h2 style="margin:0;">Active Skill Requests</h2>
+          </div>
+          <div class="table-scroll-area">
+            <table id="requestsTable">
+              <thead>
+                <tr>
+                  <th style="padding-left:30px;">Date</th>
+                  <th>Student</th>
+                  <th>Skill</th>
+                  <th style="padding-right:30px;">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="4" style="text-align:center; padding:30px;">Loading...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- Scheduled Sessions -->
-        <div class="users-table-container" style="margin-bottom:0;">
-          <h2 style="margin-top:0; margin-bottom:20px;">Recent Sessions</h2>
-          <table id="sessionsTable">
-            <thead>
-              <tr>
-                <th>Time</th>
-                <th>Participants</th>
-                <th>Link</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td colspan="3" style="text-align:center; padding:30px;">Loading...</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="users-table-card">
+          <div class="table-header-row">
+            <h2 style="margin:0;">Recent Sessions</h2>
+          </div>
+          <div class="table-scroll-area">
+            <table id="sessionsTable">
+              <thead>
+                <tr>
+                  <th style="padding-left:30px;">Time</th>
+                  <th>Participants</th>
+                  <th style="padding-right:30px;">Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="3" style="text-align:center; padding:30px;">Loading...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- ⚙️ CONFIG -->
   <script src="config.js"></script>
-
+  <script src="admin.js"></script>
   <script>
-    // Logic moved to script.js
+    // Theme Toggle Logic
+    const themeToggle = document.querySelector(".theme-toggle")
+    const body = document.body
+
+    // Check saved theme or default to dark
+    const savedTheme = localStorage.getItem("psx_theme")
+    if (savedTheme === "dark") {
+      body.classList.add("dark")
+    }
+
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("dark")
+      const theme = body.classList.contains("dark") ? "dark" : "light"
+      localStorage.setItem("psx_theme", theme)
+    })
   </script>
+</body>
+
+</html>
+</main>
+
+<!-- ⚙️ CONFIG -->
+<script src="config.js"></script>
+
+<script>
+  // Logic moved to script.js
+</script>
 </body>
 
 </html>
