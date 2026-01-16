@@ -29,59 +29,119 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
+    /* Fixed Table Container: Vertical Scroll + No Horizontal if possible */
     .users-table-container {
-      overflow-x: auto;
       background: white;
       border-radius: 12px;
       padding: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+
+      /* Vertical Scroll Logic */
+      max-height: 450px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      /* Hide horizontal */
     }
 
     table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      /* Changed from collapse for better spacing */
+      border-spacing: 0 4px;
+      /* Row spacing */
       min-width: 600px;
+      /* Force min width */
     }
 
     th {
       text-align: left;
-      padding: 12px;
-      border-bottom: 2px solid #eee;
-      color: #666;
-      font-size: 0.9rem;
+      padding: 12px 16px;
+      color: #8899a6;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid #f1f5f9;
+      position: sticky;
+      top: 0;
+      background: white;
+      /* Keep header visible on scroll */
+      z-index: 10;
     }
 
     td {
-      padding: 12px;
-      border-bottom: 1px solid #eee;
+      padding: 14px 16px;
       font-size: 0.95rem;
+      vertical-align: middle;
+      border-bottom: 1px solid #f8fafc;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Shadow Fix for Badges */
+    .cat-pill {
+      box-shadow: none !important;
+      /* Remove the "off" shadow */
+      border: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .points-input {
       width: 60px;
-      padding: 4px;
-      border-radius: 4px;
-      border: 1px solid #ddd;
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      text-align: center;
     }
 
+    /* Dark Mode Overrides */
     body.dark .stat-card,
     body.dark .users-table-container {
-      background: #1e293b;
+      background: #111827;
+      /* Darker bg */
+      border-color: #1f2937;
     }
 
     body.dark th {
-      border-bottom-color: #334155;
+      background: #111827;
       color: #94a3b8;
+      border-bottom-color: #1f2937;
     }
 
     body.dark td {
-      border-bottom-color: #334155;
+      border-bottom-color: #1f2937;
+      color: #e2e8f0;
     }
 
     body.dark .points-input {
-      background: #0f172a;
+      background: #020617;
       border-color: #334155;
       color: white;
+    }
+
+    body.dark .cat-pill {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    /* Scrollbar Styling */
+    .users-table-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .users-table-container::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .users-table-container::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+    }
+
+    body.dark .users-table-container::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.1);
     }
   </style>
 </head>
