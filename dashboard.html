@@ -38,22 +38,24 @@
       <div class="dash-grid">
         <!-- Profile Card -->
         <section class="profile-card" style="padding:0; overflow:hidden;">
-          <div style="padding:24px; background:white;" class="profile-header-bg">
-            <div class="profile-top" style="display:flex; justify-content:space-between; margin-bottom:0px;">
-              <div style="flex:1">
-                <div class="profile-name" id="dashName">
-                  <div class="skeleton skeleton-text" style="width:180px; height:1.4rem;"></div>
-                </div>
-                <div class="profile-meta" id="dashMeta" style="margin-bottom:10px;">
-                  <div class="skeleton skeleton-text" style="width:120px;"></div>
-                </div>
-                <a href="edit-profile.html" class="btn btn-secondary" style="font-size:0.8rem; padding:6px 14px;">Edit
-                  Profile</a>
+          <!-- Added 'soft-gradient-bg' for theme feeling -->
+          <div style="padding:24px; display:flex; align-items:center; gap:20px;"
+            class="profile-header-bg soft-gradient-bg">
+            <!-- Avatar Left -->
+            <div style="flex-shrink:0;">
+              <img id="dashAvatar" src="profile_pictures/bot.png"
+                style="width:64px; height:64px; border-radius:50%; object-fit:cover; border:3px solid rgba(255,255,255,0.8); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            </div>
+
+            <!-- Info Right -->
+            <div style="flex:1;">
+              <div class="profile-name" id="dashName" style="font-size:1.25rem; font-weight:700; color:#1e293b;">
+                <div class="skeleton skeleton-text" style="width:140px; height:1.4rem;"></div>
               </div>
-              <div style="text-align:right">
-                <img id="dashAvatar" src="profile_pictures/bot.png"
-                  style="width:70px;height:70px;border-radius:50%;object-fit:cover;border:2px solid #eee;">
+              <div class="profile-meta" id="dashMeta" style="margin:4px 0 12px; font-size:0.9rem; color:#64748b;">
+                <div class="skeleton skeleton-text" style="width:100px;"></div>
               </div>
+              <a href="edit-profile.html" class="btn btn-secondary-sm">Edit Profile</a>
             </div>
           </div>
           <div class="profile-footer-stats">
@@ -78,10 +80,13 @@
             <div class="small-muted" style="margin-top:6px;">Target: 100 Pts</div>
           </div>
           <div class="action-card-right">
-            <h4 style="margin:0 0 10px;">Raise Request</h4>
-            <input type="text" id="tokenInput" class="form-input" placeholder="What do you need help with?"
-              style="margin-bottom:10px;">
-            <button class="btn btn-primary" id="raiseTokenBtn" style="width:100%;">Post Request</button>
+            <h4 style="margin:0 0 12px; font-size:1rem; color:#334155;" class="action-title">Raise Request</h4>
+            <div style="display:flex; flex-direction:column; gap:8px; width:100%;">
+              <input type="text" id="tokenInput" class="form-input-lg" placeholder="What do you need help with?"
+                style="width:100%; border-radius:12px; padding:12px 16px; font-size:0.95rem;">
+              <button class="btn btn-primary" id="raiseTokenBtn"
+                style="width:100%; border-radius:12px; padding:10px;">Post Request</button>
+            </div>
           </div>
         </section>
       </div>
