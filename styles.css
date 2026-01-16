@@ -1708,8 +1708,8 @@ body.dark .profile-footer-stats {
   gap: 12px;
   padding: 10px 4px 10px 0;
   width: 100%;
-  max-height: 480px;
-  /* Reduced to 480px to align with Ultra-Compact Sidebar */
+  max-height: 420px;
+  /* Massive reduction to align with Half-Size Sidebar */
   overflow-y: auto;
 }
 
