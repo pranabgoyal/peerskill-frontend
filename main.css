@@ -1803,8 +1803,12 @@ body.dark .profile-footer-stats {
 
 /* Dark Mode for Reco Cards */
 body.dark .peer-reco-row {
-  background: #1e293b;
+  background: transparent;
+  /* Blend with container */
   border-color: #334155;
+  border: none;
+  border-bottom: 1px solid #334155;
+  border-radius: 0;
 }
 
 body.dark .peer-reco-row .peer-avatar-sm {
@@ -1925,9 +1929,15 @@ body.dark .peer-reco-row:hover {
 
 /* Dark Mode Overrides for Peer Card */
 body.dark .peer-card {
-  background: #1e293b;
+  background: transparent;
+  /* Unified with container */
   border-color: #334155;
   box-shadow: none;
+  border-bottom: 1px solid #334155;
+  /* Separator style */
+  border-radius: 0;
+  /* Reset radius for list style */
+  margin-bottom: 0;
 }
 
 body.dark .peer-name {
@@ -1958,6 +1968,11 @@ body.dark .peer-avatar-sm {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+body.dark .request-item-compact {
+  background: transparent;
+  border-color: #334155;
 }
 
 .request-info {
@@ -2131,6 +2146,8 @@ body.dark .profile-section-title {
 
 /* Dark Mode Overrides for Sidebar items */
 body.dark .session-item {
+  background: transparent;
+  /* Unified */
   border-color: #334155;
 }
 
