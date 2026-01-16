@@ -1885,8 +1885,8 @@ body.dark .profile-section-title {
 
 /* COMPACT SIDEBAR ITEMS */
 .session-item {
-  padding: 6px 8px;
-  /* Ultra compact */
+  padding: 8px 10px;
+  /* Increased breathing room */
   margin-bottom: 6px;
   border: 1px solid #f1f5f9;
   border-radius: 8px;
@@ -1898,18 +1898,28 @@ body.dark .profile-section-title {
 .session-info {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 2px;
 }
 
 .session-time {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #334155;
+  font-size: 0.8rem;
+  /* Larger Time */
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* Session Title (Skill/Topic) */
+.session-info div:last-child {
+  font-size: 0.9rem;
+  /* Larger Title */
+  font-weight: 600;
+  color: #1e293b;
 }
 
 .session-link {
-  padding: 4px 8px !important;
-  font-size: 0.75rem !important;
+  padding: 5px 10px !important;
+  /* Larger Button */
+  font-size: 0.8rem !important;
   height: auto !important;
 }
 
