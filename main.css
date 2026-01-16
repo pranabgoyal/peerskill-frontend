@@ -2024,16 +2024,16 @@ body.dark .profile-section-title {
 }
 
 .session-time {
-  font-size: 0.8rem;
-  /* Larger Time */
+  font-size: 0.85rem;
+  /* Larger Time (was 0.8rem) */
   font-weight: 600;
   color: #64748b;
 }
 
 /* Session Title (Skill/Topic) */
 .session-info div:last-child {
-  font-size: 0.9rem;
-  /* Larger Title */
+  font-size: 1rem;
+  /* Larger Title (was 0.9rem) */
   font-weight: 600;
   color: #1e293b;
 }
@@ -2058,17 +2058,19 @@ body.dark .profile-section-title {
 }
 
 .rank-badge {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-  font-size: 0.8rem;
+  width: 28px;
+  /* Slightly larger badge */
+  height: 28px;
+  margin-right: 12px;
+  font-size: 0.9rem;
+  /* Larger font inside badge */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 700;
   background: #e2e8f0;
-  color: #64748b;
+  color: #6b7280;
 }
 
 .rank-1 {
@@ -2109,15 +2111,15 @@ body.dark .profile-section-title {
 }
 
 .rank-name {
-  font-size: 0.9rem;
-  /* Larger Name */
+  font-size: 1rem;
+  /* Larger Name (was 0.9rem) */
   font-weight: 600;
   color: #1e293b;
 }
 
 .rank-points {
-  font-size: 0.8rem;
-  /* Larger Points */
+  font-size: 0.9rem;
+  /* Larger Points (was 0.8rem) */
   color: #64748b;
   text-align: right;
   font-weight: 500;
