@@ -1703,14 +1703,13 @@ body.dark .profile-footer-stats {
 /* --- RECOMMENDATION GRID (Vertical & Compact) --- */
 #recoContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
-  /* Reduced from 16px */
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  /* Smaller cards */
+  gap: 8px;
+  /* Tighter gap */
   padding: 10px 4px 10px 0;
-  /* Right padding for scrollbar */
   width: 100%;
   max-height: 600px;
-  /* Aligns with roughly 2 sidebar cards */
   overflow-y: auto;
 }
 
@@ -1720,13 +1719,12 @@ body.dark .profile-footer-stats {
 /* The Individual Card (Compact) */
 .peer-reco-row {
   width: 100%;
-  /* Fluid for grid */
   background: white;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  /* Smoother corner */
-  padding: 14px 10px;
-  /* Tighter padding */
+  border-radius: 10px;
+  /* Smaller radius */
+  padding: 10px 8px;
+  /* Minimal padding */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1736,21 +1734,21 @@ body.dark .profile-footer-stats {
 }
 
 .peer-reco-row:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.08);
   border-color: #cbd5e1;
 }
 
 /* Internal Avatar styling (Compact) */
 .peer-reco-row .peer-avatar-sm {
-  width: 60px;
-  /* Smaller avatar (was 72px) */
-  height: 60px;
+  width: 50px;
+  /* Small avatar (was 60px) */
+  height: 50px;
   margin-right: 0;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #f1f5f9;
+  border: 2px solid #f1f5f9;
 }
 
 /* Internal Text Container */
@@ -1758,9 +1756,19 @@ body.dark .profile-footer-stats {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
+  /* Reduced gap */
   flex: 1;
-  /* Push button to bottom */
+}
+
+/* Hardcode smaller fonts for compact look */
+.peer-reco-row .peer-reco-main div:first-child {
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.peer-reco-row .peer-reco-main div:nth-child(2) {
+  font-size: 0.75rem !important;
 }
 
 /* Dark Mode for Reco Cards */
@@ -1809,38 +1817,38 @@ body.dark .profile-section-title {
 }
 
 
-/* Sidebar Lists - Stacked to match Left */
-#upcomingList,
-.leaderboard-list {
+/* Sidebar Lists */
+#upcomingList {
   max-height: 280px;
-  /* ~Half of the recommended height */
   overflow-y: auto;
   padding-right: 4px;
 }
 
+/* Top Contributors - Full Height (No Scrollbar) per request */
+.leaderboard-list {
+  height: auto;
+  overflow: visible;
+}
+
 /* Unified Scrollbar Styling for these lists */
 #recoContainer::-webkit-scrollbar,
-#upcomingList::-webkit-scrollbar,
-.leaderboard-list::-webkit-scrollbar {
+#upcomingList::-webkit-scrollbar {
   width: 6px;
 }
 
 #recoContainer::-webkit-scrollbar-track,
-#upcomingList::-webkit-scrollbar-track,
-.leaderboard-list::-webkit-scrollbar-track {
+#upcomingList::-webkit-scrollbar-track {
   background: transparent;
 }
 
 #recoContainer::-webkit-scrollbar-thumb,
-#upcomingList::-webkit-scrollbar-thumb,
-.leaderboard-list::-webkit-scrollbar-thumb {
+#upcomingList::-webkit-scrollbar-thumb {
   background-color: #cbd5e1;
   border-radius: 10px;
 }
 
 body.dark #recoContainer::-webkit-scrollbar-thumb,
-body.dark #upcomingList::-webkit-scrollbar-thumb,
-body.dark .leaderboard-list::-webkit-scrollbar-thumb {
+body.dark #upcomingList::-webkit-scrollbar-thumb {
   background-color: #475569;
 }
 
