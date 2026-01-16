@@ -1866,12 +1866,20 @@ body.dark .profile-header-bg {
 
 /* Soft Gradient Background for Profile - NOW PURE WHITE */
 .soft-gradient-bg {
-  background: white;
+  background: white !important;
 }
 
 body.dark .soft-gradient-bg {
-  background: #1e293b;
+  background: #1e293b !important;
   /* Dark mode card bg */
+}
+
+/* Ensure Parent Profile Card is also clean */
+.profile-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  /* Softer shadow */
 }
 
 /* Smaller Secondary Button */
