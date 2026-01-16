@@ -1714,9 +1714,9 @@ body.dark .profile-footer-stats {
   gap: 12px;
   padding: 10px 4px 10px 0;
   width: 100%;
-  /* height: auto; max-height removed to allow full expansion */
-  height: auto;
-  overflow: visible;
+  /* Align with Right Column (Upcoming + Contributors) */
+  max-height: 550px;
+  overflow-y: auto;
 }
 
 /* Individual Card (Landscape Profile) */
