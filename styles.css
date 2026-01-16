@@ -1581,3 +1581,117 @@ body.dark .toast {
   background: white;
   color: #1e293b;
 }
+
+/* --- NEW DASHBOARD LAYOUT (Refined) --- */
+
+.main-dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+  .main-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.left-col-stack, .right-col-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Action Card Row (Points + Request) */
+.action-card-row {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  overflow: hidden;
+  text-align: left;
+}
+
+.action-card-left {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.action-card-right {
+  flex: 1.2;
+  padding: 30px;
+  background: #f8fafc; /* Subtle grey instead of mint */
+  border-left: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+body.dark .action-card-right {
+  background: #162032; /* Slightly lighter dark */
+  border-color: #1e293b;
+}
+
+/* Profile Alignment */
+.profile-footer-stats {
+  background: #f8fafc;
+  padding: 20px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+}
+
+body.dark .profile-footer-stats {
+  background: #162032;
+  border-color: #1e293b;
+}
+
+/* Align Left Utility */
+.align-left-card {
+  text-align: left;
+  align-items: stretch; /* Stretch children */
+}
+
+/* Grids for Arrays */
+.peers-grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.requests-grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* Scrollable Cards (Sidebar) */
+.scrollable-card {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 18px; /* Room for scrollbar */
+}
+
+.scrollable-card::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollable-card::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollable-card::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 20px;
+}
+body.dark .scrollable-card::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* Fix Card Sizing overlap */
+.card, .profile-card, .sidebar-card {
+     box-sizing: border-box;
+}

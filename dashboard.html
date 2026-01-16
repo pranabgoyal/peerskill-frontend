@@ -38,7 +38,7 @@
 
         <!-- Profile Card -->
         <section class="profile-card" style="padding:0; overflow:hidden;">
-          <div style="padding:24px; background:white;">
+          <div style="padding:24px; background:white;" class="profile-header-bg">
             <div class="profile-top" style="margin-bottom:0px;">
               <div style="flex:1">
                 <div class="profile-name" id="dashName">
@@ -56,8 +56,7 @@
               </div>
             </div>
           </div>
-          <div
-            style="background:#f8fafc; padding:20px; border-top:1px solid #f1f5f9; display:flex; justify-content:space-between;">
+          <div class="profile-footer-stats">
             <div>
               <div class="profile-section-title">Teaching</div>
               <div id="teachTags" class="skills-tags" style="justify-content:flex-start"></div>
@@ -70,30 +69,28 @@
         </section>
 
         <!-- Points & Actions -->
-        <section class="card" style="display:flex; flex-direction:row; padding:0; overflow:hidden; text-align:left;">
-          <div style="flex:1; padding:30px; display:flex; flex-direction:column; justify-content:center;">
+        <section class="card action-card-row">
+          <div class="action-card-left">
             <h3 style="margin-top:0;">Skill Points</h3>
-            <div class="points-display" id="dashBigPoints"
-              style="font-size:3rem; font-weight:800; color:#14b8a6; line-height:1;">
+            <div class="points-display" id="dashBigPoints">
               <div class="skeleton skeleton-text" style="width:60px; height:2rem;"></div>
             </div>
             <div class="small-muted" style="margin-top:6px;">Target: 100 Pts</div>
           </div>
-          <div
-            style="flex:1.2; padding:30px; background:#f0fdfa; border-left:1px solid #ccfbf1; display:flex; flex-direction:column; justify-content:center;">
+          <div class="action-card-right">
             <h4 style="margin:0 0 10px;">Raise Request</h4>
             <input type="text" id="tokenInput" class="form-input" placeholder="What do you need help with?"
-              style="margin-bottom:10px; background:white;">
+              style="margin-bottom:10px;">
             <button class="btn btn-primary" id="raiseTokenBtn" style="width:100%;">Post Request</button>
           </div>
         </section>
       </div>
 
       <!-- Main Content Grid -->
-      <div style="display:grid; grid-template-columns: 2fr 1fr; gap:30px; margin-top:30px;">
+      <div class="main-dashboard-grid">
 
         <!-- Left Column -->
-        <div style="display:flex; flex-direction:column; gap:30px;">
+        <div class="left-col-stack">
 
           <!-- Recommendations -->
           <section class="peer-reco-card">
@@ -107,31 +104,30 @@
           </section>
 
           <!-- Available Peers -->
-          <section class="card" style="text-align:left;">
+          <section class="card align-left-card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
               <h3>Explore Peers</h3>
               <input type="text" id="peerSearch" class="form-input" placeholder="Search name, skill..."
                 style="width:200px; padding:6px 12px;">
             </div>
-            <div id="randomPeersList" style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+            <div id="randomPeersList" class="peers-grid-list">
               <div class="skeleton skeleton-card" style="height:70px"></div>
               <div class="skeleton skeleton-card" style="height:70px"></div>
             </div>
           </section>
 
           <!-- Community Requests -->
-          <section class="card" style="text-align:left;">
+          <section class="card align-left-card">
             <h3>Community Requests</h3>
-            <div id="communityRequestsList"
-              style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:16px; margin-top:16px;"></div>
+            <div id="communityRequestsList" class="requests-grid-list"></div>
           </section>
         </div>
 
         <!-- Right Sidebar -->
-        <div style="display:flex; flex-direction:column; gap:24px;">
+        <div class="right-col-stack">
 
           <!-- Upcoming Sessions -->
-          <div class="sidebar-card">
+          <div class="sidebar-card scrollable-card">
             <h3>📅 Upcoming Sessions</h3>
             <div id="upcomingList">
               <div class="skeleton skeleton-card" style="height:60px"></div>
@@ -139,7 +135,7 @@
           </div>
 
           <!-- Leaderboard -->
-          <div class="sidebar-card">
+          <div class="sidebar-card scrollable-card">
             <h3>🏆 Top Contributors</h3>
             <div class="leaderboard-list" id="leaderboardList">
               <div class="skeleton skeleton-text"></div>
