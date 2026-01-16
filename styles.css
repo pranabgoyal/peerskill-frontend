@@ -1700,52 +1700,78 @@ body.dark .profile-footer-stats {
   border-color: #1e293b;
 }
 
-/* --- RECOMMENDATION GRID (Vertical Layout) --- */
+/* --- RECOMMENDATION CAROUSEL (Compact Horizontal) --- */
 #recoContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 10px 0;
-  /* Removed horizontal scroll properties */
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 12px;
+  /* Tighter spacing */
+  padding: 10px 4px 16px 4px;
+  /* Bottom padding for scrollbar */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Cleanup unused scrollbar styles for this specific ID since it's now a grid */
+/* Slim Scrollbar for Carousel */
+#recoContainer::-webkit-scrollbar {
+  height: 6px;
+}
+
+#recoContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#recoContainer::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 10px;
+}
+
+#recoContainer::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+body.dark #recoContainer::-webkit-scrollbar-thumb {
+  background-color: #475569;
+}
 
 
-/* The Individual Card */
+/* The Individual Card (Compact) */
 .peer-reco-row {
-  width: 100%;
-  /* Fluid width for grid */
+  flex: 0 0 auto;
+  /* Don't shrink */
+  width: 200px;
+  /* Fixed smaller width */
   background: white;
   border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 24px 20px;
+  border-radius: 14px;
+  /* Slightly smaller radius */
+  padding: 16px 12px;
+  /* Reduced padding */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  scroll-snap-align: start;
   transition: all 0.2s ease;
   position: relative;
 }
 
 .peer-reco-row:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
   border-color: #cbd5e1;
 }
 
-/* Internal Avatar styling */
+/* Internal Avatar styling (Compact) */
 .peer-reco-row .peer-avatar-sm {
-  width: 72px;
-  height: 72px;
+  width: 60px;
+  /* Smaller avatar (was 72px) */
+  height: 60px;
   margin-right: 0;
-  /* Override any row margin */
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #f1f5f9;
-  /* Avatar border */
+  border: 3px solid #f1f5f9;
 }
 
 /* Internal Text Container */
