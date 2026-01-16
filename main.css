@@ -2138,10 +2138,11 @@ body.dark .profile-section-title {
 
 .rank-points {
   font-size: 0.9rem;
-  /* Larger Points (was 0.8rem) */
-  color: #64748b;
+  color: #0d9488;
+  /* Teal Highlight */
   text-align: right;
-  font-weight: 500;
+  font-weight: 700;
+  /* Bold */
 }
 
 /* Dark Mode Overrides for Sidebar items */
@@ -2159,8 +2160,29 @@ body.dark .leaderboard-item {
   border-bottom-color: #334155;
 }
 
+body.dark .session-item,
+body.dark .leaderboard-item {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #334155;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+body.dark .session-item:last-child,
+body.dark .leaderboard-item:last-child {
+  border-bottom: none;
+}
+
 body.dark .rank-name {
   color: #e2e8f0;
+}
+
+body.dark .rank-points {
+  color: #2dd4bf;
+  /* Lighter Teal for Dark Mode */
+  text-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
+  /* Subtle Glow */
 }
 
 /* Top Contributors - Full Height (No Scrollbar) per request */
