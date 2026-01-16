@@ -1809,12 +1809,63 @@ body.dark .peer-reco-row:hover {
   gap: 16px;
 }
 
-.requests-grid-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  /* Wider to prevent squishing */
-  gap: 16px;
-  margin-top: 16px;
+/* Bottom Tiles Alignment */
+#randomPeersList,
+#communityRequestsList {
+  max-height: 350px;
+  /* Matching fixed height for bottom tiles */
+  overflow-y: auto;
+}
+
+/* Compact Community Requests (Sidebar Style) */
+.requests-list-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.request-item-compact {
+  padding: 8px 10px;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.request-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.request-skill {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.request-user {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* Custom Scrollbar for bottom lists */
+#randomPeersList::-webkit-scrollbar,
+#communityRequestsList::-webkit-scrollbar {
+  width: 6px;
+}
+
+#randomPeersList::-webkit-scrollbar-track,
+#communityRequestsList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#randomPeersList::-webkit-scrollbar-thumb,
+#communityRequestsList::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 10px;
 }
 
 /* Dark Mode Text Fixes */
