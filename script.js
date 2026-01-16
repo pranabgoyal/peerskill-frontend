@@ -446,7 +446,7 @@ function loadCommunityRequests(baseUrl) {
                  <div><strong>${r.skill}</strong></div>
                  <div class="small-muted">Requested by ${r.name}</div>
               </div>
-              <button class="btn btn-secondary" style="font-size:0.8rem" onclick="openScheduleModal('${r.email}','${r.name}')">Teach</button>
+               <button class="btn btn-primary btn-compact" style="font-size:0.8rem" onclick="openScheduleModal('${r.email}','${r.name}')">Teach</button>
             `
       c.appendChild(d)
     })
