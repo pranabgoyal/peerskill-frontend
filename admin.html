@@ -74,7 +74,8 @@
     }
 
     th {
-      text-align: left;
+      text-align: center;
+      /* CENTER ALIGNED AS REQUESTED */
       padding: 16px 20px;
       /* Bigger padding */
       color: #64748b;
@@ -95,6 +96,8 @@
     }
 
     td {
+      text-align: center;
+      /* CENTER ALIGNED AS REQUESTED */
       padding: 16px 20px;
       font-size: 0.95rem;
       vertical-align: middle;
@@ -109,13 +112,14 @@
     /* Role Badge - CLEAN DESIGN */
     .role-badge {
       display: inline-block;
-      padding: 6px 14px;
+      padding: 6px 16px;
       border-radius: 999px;
       font-size: 0.85rem;
       font-weight: 600;
-      background: #f1f5f9;
+      background: #e2e8f0;
+      /* Darker grey for light mode */
       color: #475569;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #cbd5e1;
     }
 
     .points-input {
@@ -125,6 +129,8 @@
       border: 1px solid #cbd5e1;
       text-align: center;
       font-weight: 600;
+      margin: 0 auto;
+      display: block;
     }
 
     /* Dark Mode Overrides */
@@ -235,12 +241,12 @@
           <table id="userManagementTable">
             <thead>
               <tr>
-                <th width="60" style="padding-left:30px;">Avatar</th>
+                <th width="60">Avatar</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
                 <th>Points</th>
-                <th style="padding-right:30px;">Admin Action</th>
+                <th>Admin Action</th>
               </tr>
             </thead>
             <tbody id="userTableBody">
@@ -263,10 +269,10 @@
             <table id="requestsTable">
               <thead>
                 <tr>
-                  <th style="padding-left:30px;">Date</th>
+                  <th>Date</th>
                   <th>Student</th>
                   <th>Skill</th>
-                  <th style="padding-right:30px;">Status</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -287,9 +293,9 @@
             <table id="sessionsTable">
               <thead>
                 <tr>
-                  <th style="padding-left:30px;">Time</th>
+                  <th>Time</th>
                   <th>Participants</th>
-                  <th style="padding-right:30px;">Link</th>
+                  <th>Link</th>
                 </tr>
               </thead>
               <tbody>
