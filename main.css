@@ -1618,6 +1618,7 @@ body.dark .toast {
   /* Maintain vertical symmetry */
   gap: 30px;
   margin-top: 30px;
+  align-items: start;
 }
 
 @media (max-width: 900px) {
@@ -2522,37 +2523,4 @@ body.dark .sidebar-card:hover {
 body.dark .small-muted {
   color: #94a3b8;
   /* Lighter in dark mode */
-}
-
-/* --- EMERGENCY FIX FOR RECO CARD WHITESPACE --- */
-.peer-reco-card {
-  /* Ensure it looks like a card */
-  background: white;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-
-  /* CRITICAL: Hug Content */
-  height: auto !important;
-  min-height: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-
-  /* Reset spacing */
-  margin-bottom: 20px;
-}
-
-body.dark .peer-reco-card {
-  background: #1e293b;
-  border-color: #334155;
-  box-shadow: none;
-}
-
-/* Ensure container inside doesn't prop it open */
-#recoContainer {
-  height: auto !important;
-  min-height: 0 !important;
-  align-content: start !important;
-  padding-bottom: 0 !important;
-  /* Remove internal padding bottom */
 }
