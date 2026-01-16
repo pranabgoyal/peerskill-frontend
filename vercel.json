@@ -1,13 +1,15 @@
 {
-  "version": 2,
-  "name": "peerskill-frontend",
-  "builds": [
-    {
-      "src": "**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    { "handle": "filesystem" }
-  ]
+    "version": 2,
+    "name": "peerskill-frontend-v2",
+    "builds": [
+        {
+            "src": "**",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "handle": "filesystem"
+        }
+    ]
 }
