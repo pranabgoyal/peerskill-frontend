@@ -1811,11 +1811,115 @@ body.dark .peer-reco-row:hover {
 }
 
 /* Bottom Tiles Alignment */
+/* Bottom Tiles Alignment */
 #randomPeersList,
 #communityRequestsList {
   max-height: 350px;
   /* Matching fixed height for bottom tiles */
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* Consistent gap */
+  padding: 4px;
+  /* Internal padding for shadows */
+}
+
+/* Explore Peers - Horizontal Card Style */
+.peer-card {
+  display: flex !important;
+  /* Override any grid styles */
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: white;
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+  /* Softer corners */
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+  /* Subtle depth */
+}
+
+.peer-card:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Internal Layout for Peer Card */
+.peer-main-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.peer-avatar-sm {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f8fafc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.peer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.peer-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.peer-teaches {
+  font-size: 0.75rem;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Unified Compact Button */
+.btn-compact {
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  /* Gradient Pop */
+  border: none;
+  box-shadow: 0 2px 6px rgba(20, 184, 166, 0.25);
+}
+
+.btn-compact:hover {
+  box-shadow: 0 4px 10px rgba(20, 184, 166, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Dark Mode Overrides for Peer Card */
+body.dark .peer-card {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: none;
+}
+
+body.dark .peer-name {
+  color: #f1f5f9;
+}
+
+body.dark .peer-teaches {
+  background: #334155;
+  color: #94a3b8;
+}
+
+body.dark .peer-avatar-sm {
+  border-color: #334155;
 }
 
 /* Compact Community Requests (Sidebar Style) */
