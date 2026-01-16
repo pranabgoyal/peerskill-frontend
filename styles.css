@@ -1708,8 +1708,8 @@ body.dark .profile-footer-stats {
   gap: 12px;
   padding: 10px 4px 10px 0;
   width: 100%;
-  max-height: 420px;
-  /* Massive reduction to align with Half-Size Sidebar */
+  max-height: 500px;
+  /* Reduced to 500px to align with Compact Sidebar */
   overflow-y: auto;
 }
 
@@ -1827,25 +1827,18 @@ body.dark .profile-section-title {
 
 /* Sidebar Lists */
 #upcomingList {
-  max-height: 200px;
-  /* Drastically reduced */
+  max-height: 280px;
   overflow-y: auto;
-  padding-right: 2px;
+  padding-right: 4px;
 }
 
 /* COMPACT SIDEBAR ITEMS */
-.sidebar-card {
-  padding: 8px 12px !important;
-  /* Minimal padding */
-}
-
 .session-item {
-  padding: 4px 6px;
-  /* Tiny padding */
-  margin-bottom: 4px;
-  /* Tiny margin */
+  padding: 6px 8px;
+  /* Ultra compact */
+  margin-bottom: 6px;
   border: 1px solid #f1f5f9;
-  border-radius: 6px;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1858,31 +1851,22 @@ body.dark .profile-section-title {
 }
 
 .session-time {
-  font-size: 0.7rem;
-  /* Smaller font */
+  font-size: 0.75rem;
   font-weight: 700;
   color: #334155;
-  margin-bottom: 0;
-}
-
-div.session-info>div:not(.session-time) {
-  font-size: 0.7rem;
-  /* Topic text smaller */
 }
 
 .session-link {
-  padding: 2px 6px !important;
-  /* Tiny button */
-  font-size: 0.65rem !important;
+  padding: 4px 8px !important;
+  font-size: 0.75rem !important;
   height: auto !important;
-  border-radius: 4px;
 }
 
 .leaderboard-item {
   display: flex;
   align-items: center;
-  padding: 4px 0;
-  /* Tiny padding */
+  padding: 6px 0;
+  /* Ultra compact */
   border-bottom: 1px solid #f1f5f9;
 }
 
@@ -1891,11 +1875,10 @@ div.session-info>div:not(.session-time) {
 }
 
 .rank-badge {
-  width: 18px;
-  /* Smaller badge */
-  height: 18px;
-  margin-right: 6px;
-  font-size: 0.65rem;
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  font-size: 0.75rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -1921,29 +1904,18 @@ div.session-info>div:not(.session-time) {
 }
 
 .leaderboard-avatar {
-  width: 24px;
-  /* Smaller avatar */
-  height: 24px;
-  margin-right: 6px;
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-/* Updated Rank Info for Right Alignment */
 .rank-info {
   display: flex;
-  flex-direction: row;
-  /* Horizontal */
-  justify-content: space-between;
-  /* Space out Name and Points */
-  align-items: center;
-  flex: 1;
-  /* Take up remaining space */
+  flex-direction: column;
+  gap: 0;
   line-height: 1.1;
-}
-
-.rank-points {
-  text-align: right;
 }
 
 .rank-name {
