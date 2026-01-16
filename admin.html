@@ -343,25 +343,7 @@
 
   <script src="config.js"></script>
 
-  <script>
-    // Theme Toggle Logic
-    const themeToggle = document.querySelector(".theme-toggle")
-    const body = document.body
 
-    // Check saved theme or default to dark
-    const savedTheme = localStorage.getItem("psx_theme")
-    if (savedTheme === "dark") {
-      body.classList.add("dark")
-    }
-
-    if (themeToggle) {
-      themeToggle.addEventListener("click", () => {
-        body.classList.toggle("dark")
-        const theme = body.classList.contains("dark") ? "dark" : "light"
-        localStorage.setItem("psx_theme", theme)
-      })
-    }
-  </script>
 </body>
 
 </html>
