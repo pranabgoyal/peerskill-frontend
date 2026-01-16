@@ -1827,23 +1827,25 @@ body.dark .profile-section-title {
 
 /* Sidebar Lists */
 #upcomingList {
-  max-height: 280px;
+  max-height: 200px;
+  /* Drastically reduced */
   overflow-y: auto;
-  padding-right: 4px;
+  padding-right: 2px;
 }
 
 /* COMPACT SIDEBAR ITEMS */
 .sidebar-card {
-  padding: 12px 16px !important;
-  /* Reduced padding from default card */
+  padding: 8px 12px !important;
+  /* Minimal padding */
 }
 
 .session-item {
-  padding: 6px 8px;
-  /* Ultra compact */
-  margin-bottom: 6px;
+  padding: 4px 6px;
+  /* Tiny padding */
+  margin-bottom: 4px;
+  /* Tiny margin */
   border: 1px solid #f1f5f9;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1856,22 +1858,31 @@ body.dark .profile-section-title {
 }
 
 .session-time {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  /* Smaller font */
   font-weight: 700;
   color: #334155;
+  margin-bottom: 0;
+}
+
+div.session-info>div:not(.session-time) {
+  font-size: 0.7rem;
+  /* Topic text smaller */
 }
 
 .session-link {
-  padding: 4px 8px !important;
-  font-size: 0.75rem !important;
+  padding: 2px 6px !important;
+  /* Tiny button */
+  font-size: 0.65rem !important;
   height: auto !important;
+  border-radius: 4px;
 }
 
 .leaderboard-item {
   display: flex;
   align-items: center;
-  padding: 6px 0;
-  /* Ultra compact */
+  padding: 4px 0;
+  /* Tiny padding */
   border-bottom: 1px solid #f1f5f9;
 }
 
@@ -1880,10 +1891,11 @@ body.dark .profile-section-title {
 }
 
 .rank-badge {
-  width: 22px;
-  height: 22px;
-  margin-right: 8px;
-  font-size: 0.75rem;
+  width: 18px;
+  /* Smaller badge */
+  height: 18px;
+  margin-right: 6px;
+  font-size: 0.65rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -1909,9 +1921,10 @@ body.dark .profile-section-title {
 }
 
 .leaderboard-avatar {
-  width: 28px;
-  height: 28px;
-  margin-right: 8px;
+  width: 24px;
+  /* Smaller avatar */
+  height: 24px;
+  margin-right: 6px;
   border-radius: 50%;
   object-fit: cover;
 }
