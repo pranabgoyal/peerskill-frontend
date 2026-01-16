@@ -1703,49 +1703,47 @@ body.dark .profile-footer-stats {
 /* --- RECOMMENDATION GRID (Vertical & Compact) --- */
 #recoContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  /* Smaller cards */
-  gap: 8px;
-  /* Tighter gap */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  /* 2 Per Row */
+  gap: 12px;
   padding: 10px 4px 10px 0;
   width: 100%;
   max-height: 600px;
   overflow-y: auto;
 }
 
-/* Cleanup unused scrollbar styles */
-
-
-/* The Individual Card (Compact) */
+/* Individual Card (Landscape Profile) */
 .peer-reco-row {
   width: 100%;
   background: white;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  /* Smaller radius */
-  padding: 10px 8px;
-  /* Minimal padding */
+  border-radius: 12px;
+  padding: 12px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  /* Horizontal Layout */
   align-items: center;
-  text-align: center;
+  justify-content: flex-start;
+  text-align: left;
   transition: all 0.2s ease;
   position: relative;
 }
 
 .peer-reco-row:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 15px -3px rgba(0, 0, 0, 0.08);
   border-color: #cbd5e1;
 }
 
-/* Internal Avatar styling (Compact) */
+/* Internal Avatar styling */
 .peer-reco-row .peer-avatar-sm {
   width: 50px;
-  /* Small avatar (was 60px) */
   height: 50px;
-  margin-right: 0;
-  margin-bottom: 8px;
+  margin-right: 12px;
+  /* Side margin */
+  margin-bottom: 0;
+  /* Reset bottom margin */
+  flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #f1f5f9;
@@ -1753,22 +1751,25 @@ body.dark .profile-footer-stats {
 
 /* Internal Text Container */
 .peer-reco-row .peer-reco-main {
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  /* Reduced gap */
+  gap: 2px;
   flex: 1;
+  align-items: flex-start;
+  /* Left Align */
 }
 
-/* Hardcode smaller fonts for compact look */
+/* Fonts */
 .peer-reco-row .peer-reco-main div:first-child {
-  font-size: 0.9rem;
-  line-height: 1.2;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
 }
 
 .peer-reco-row .peer-reco-main div:nth-child(2) {
   font-size: 0.75rem !important;
+  color: #64748b;
 }
 
 /* Dark Mode for Reco Cards */
