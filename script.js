@@ -537,7 +537,7 @@ function loadAdminUsers(baseUrl) {
         <td><img src="${u.avatar || 'profile_pictures/bot.png'}" class="table-avatar"></td>
         <td><strong>${u.name}</strong></td>
         <td>${u.email}</td>
-        <td><span class="cat-pill" style="font-size:0.75rem;padding:4px 10px">${role}</span></td>
+        <td><span class="role-badge role-${role.toLowerCase()}">${role}</span></td>
         <td style="font-weight:600;color:#059669">${u.skillPoints || 0}</td>
         <td>${action}</td>
       </tr>`
