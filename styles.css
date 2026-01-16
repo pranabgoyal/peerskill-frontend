@@ -1624,11 +1624,11 @@ body.dark .toast {
   }
 }
 
+.left-col-stack,
 .right-col-stack {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  /* Reduced from 30px */
+  gap: 30px;
 }
 
 /* Action Card Row (Points + Request) */
@@ -1708,8 +1708,8 @@ body.dark .profile-footer-stats {
   gap: 12px;
   padding: 10px 4px 10px 0;
   width: 100%;
-  max-height: 480px;
-  /* Aggressively reduced to align with compact sidebar */
+  max-height: 500px;
+  /* Reduced to 500px to align with Compact Sidebar */
   overflow-y: auto;
 }
 
@@ -1830,6 +1830,120 @@ body.dark .profile-section-title {
   max-height: 280px;
   overflow-y: auto;
   padding-right: 4px;
+}
+
+/* COMPACT SIDEBAR ITEMS */
+.session-item {
+  padding: 6px 8px;
+  /* Ultra compact */
+  margin-bottom: 6px;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.session-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.session-time {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.session-link {
+  padding: 4px 8px !important;
+  font-size: 0.75rem !important;
+  height: auto !important;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  /* Ultra compact */
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.leaderboard-item:last-child {
+  border-bottom: none;
+}
+
+.rank-badge {
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  font-size: 0.75rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+.rank-1 {
+  background: #fbbf24;
+  color: white;
+}
+
+.rank-2 {
+  background: #94a3b8;
+  color: white;
+}
+
+.rank-3 {
+  background: #b45309;
+  color: white;
+}
+
+.leaderboard-avatar {
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rank-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1.1;
+}
+
+.rank-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.rank-points {
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+/* Dark Mode Overrides for Sidebar items */
+body.dark .session-item {
+  border-color: #334155;
+}
+
+body.dark .session-time {
+  color: #94a3b8;
+}
+
+body.dark .leaderboard-item {
+  border-bottom-color: #334155;
+}
+
+body.dark .rank-name {
+  color: #e2e8f0;
 }
 
 /* Top Contributors - Full Height (No Scrollbar) per request */
