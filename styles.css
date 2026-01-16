@@ -1704,8 +1704,8 @@ body.dark .profile-footer-stats {
 #recoContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  /* Compact columns */
-  gap: 16px;
+  gap: 10px;
+  /* Reduced from 16px */
   padding: 10px 0;
   width: 100%;
   /* No horizontal scroll */
@@ -1720,10 +1720,10 @@ body.dark .profile-footer-stats {
   /* Fluid for grid */
   background: white;
   border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  /* Slightly smaller radius */
-  padding: 16px 12px;
-  /* Reduced padding */
+  border-radius: 12px;
+  /* Smoother corner */
+  padding: 14px 10px;
+  /* Tighter padding */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1862,42 +1862,90 @@ body.dark .profile-header-bg {
   background: #1e293b !important;
 }
 
-/* Ensure Action Card aligns in Dark Mode */
-body.dark .action-card-right {
-  background: #111827;
+/* --- NEW UI ELEMENTS --- */
+
+/* Soft Gradient Background for Profile - NOW PURE WHITE */
+.soft-gradient-bg {
+  background: white;
 }
 
-/* Gradient Text Animation */
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+body.dark .soft-gradient-bg {
+  background: #1e293b;
+  /* Dark mode card bg */
 }
 
-/* Points Styling - Animated & Vibrant */
+/* Smaller Secondary Button */
+.btn-secondary-sm {
+  display: inline-block;
+  background: white;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-secondary-sm:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #334155;
+}
+
+body.dark .btn-secondary-sm {
+  background: #334155;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+body.dark .btn-secondary-sm:hover {
+  background: #475569;
+  color: white;
+}
+
+/* Larger Input for Request */
+.form-input-lg {
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.form-input-lg:focus {
+  border-color: #14b8a6;
+  /* Teal */
+  background: white;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+}
+
+body.dark .form-input-lg {
+  background: #0f172a;
+  border-color: #334155;
+  color: white;
+}
+
+body.dark .form-input-lg:focus {
+  border-color: #2dd4bf;
+  background: #0f172a;
+}
+
+body.dark .action-title {
+  color: #e2e8f0 !important;
+}
+
+/* Gradient Text Animation *REMOVED for solid color per request* */
+/* Points Styling - Solid Theme Green/Teal */
 #dashBigPoints {
   font-size: 3rem;
-  /* Slightly bigger to match image focus */
   font-weight: 800;
-  background: linear-gradient(270deg, #06b6d4, #3b82f6, #06b6d4);
-  /* Teal -> Blue -> Teal flow */
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientShift 6s ease infinite;
+  color: #14b8a6;
+  /* Theme Teal */
   line-height: 1;
   margin-bottom: 8px;
-  filter: drop-shadow(0 2px 10px rgba(6, 182, 212, 0.2));
-  /* Glow effect */
+  filter: none;
+  /* Removed glow */
 }
 
 /* Accent Header Style (for "Recommended") */
