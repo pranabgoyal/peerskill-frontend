@@ -807,8 +807,9 @@ body.dark .cta-final p {
 
 .footer {
   text-align: center;
-  padding: 28px 0 34px;
-  font-size: 0.86rem;
+  padding: 15px 0;
+  /* Reduced from 28px 0 34px */
+  font-size: 0.8rem;
   color: #9ca3af;
   border-top: 1px solid rgba(226, 232, 240, 0.7);
   margin-top: 20px;
