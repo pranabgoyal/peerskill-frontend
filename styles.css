@@ -1706,9 +1706,12 @@ body.dark .profile-footer-stats {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 10px;
   /* Reduced from 16px */
-  padding: 10px 0;
+  padding: 10px 4px 10px 0;
+  /* Right padding for scrollbar */
   width: 100%;
-  /* No horizontal scroll */
+  max-height: 600px;
+  /* Aligns with roughly 2 sidebar cards */
+  overflow-y: auto;
 }
 
 /* Cleanup unused scrollbar styles */
@@ -1803,6 +1806,42 @@ body.dark .small-muted,
 body.dark .profile-meta,
 body.dark .profile-section-title {
   color: #94a3b8 !important;
+}
+
+
+/* Sidebar Lists - Stacked to match Left */
+#upcomingList,
+.leaderboard-list {
+  max-height: 280px;
+  /* ~Half of the recommended height */
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Unified Scrollbar Styling for these lists */
+#recoContainer::-webkit-scrollbar,
+#upcomingList::-webkit-scrollbar,
+.leaderboard-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+#recoContainer::-webkit-scrollbar-track,
+#upcomingList::-webkit-scrollbar-track,
+.leaderboard-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#recoContainer::-webkit-scrollbar-thumb,
+#upcomingList::-webkit-scrollbar-thumb,
+.leaderboard-list::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 10px;
+}
+
+body.dark #recoContainer::-webkit-scrollbar-thumb,
+body.dark #upcomingList::-webkit-scrollbar-thumb,
+body.dark .leaderboard-list::-webkit-scrollbar-thumb {
+  background-color: #475569;
 }
 
 /* Scrollable Cards (Sidebar) - Now Fully Expanded */
