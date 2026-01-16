@@ -1618,6 +1618,7 @@ body.dark .toast {
   /* Maintain vertical symmetry */
   gap: 30px;
   margin-top: 30px;
+  align-items: start;
 }
 
 @media (max-width: 900px) {
