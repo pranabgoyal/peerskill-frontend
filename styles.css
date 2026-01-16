@@ -1803,15 +1803,24 @@ body.dark .peer-reco-row:hover {
 /* Grids for Arrays */
 .peers-grid-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  /* Increased from default */
   gap: 16px;
 }
 
 .requests-grid-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  /* Wider to prevent squishing */
   gap: 16px;
   margin-top: 16px;
+}
+
+/* Dark Mode Text Fixes */
+body.dark .small-muted,
+body.dark .profile-meta,
+body.dark .profile-section-title {
+  color: #94a3b8 !important;
 }
 
 /* Scrollable Cards (Sidebar) */
