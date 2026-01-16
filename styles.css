@@ -1598,7 +1598,8 @@ body.dark .toast {
 
 .dash-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  /* MATCHES main-dashboard-grid for vertical alignment */
   /* Profile gets more space */
   gap: 30px;
   align-items: stretch;
@@ -1700,42 +1701,22 @@ body.dark .profile-footer-stats {
   border-color: #1e293b;
 }
 
-/* --- RECOMMENDATION CAROUSEL --- */
+/* --- RECOMMENDATION GRID (Vertical Layout) --- */
 #recoContainer {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  padding: 4px 4px 16px 4px;
-  /* Reduced bottom padding */
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 10px 0;
+  /* Removed horizontal scroll properties */
 }
 
-/* Custom Slim Scrollbar for Carousel - MATCH ADMIN STYLE */
-#recoContainer::-webkit-scrollbar {
-  height: 6px;
-  /* Thin */
-}
+/* Cleanup unused scrollbar styles for this specific ID since it's now a grid */
 
-#recoContainer::-webkit-scrollbar-track {
-  background: transparent;
-}
 
-#recoContainer::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
-  border-radius: 99px;
-}
-
-body.dark #recoContainer::-webkit-scrollbar-thumb {
-  background-color: #475569;
-}
-
-/* The Individual Card (was a row before) */
+/* The Individual Card */
 .peer-reco-row {
-  min-width: 220px;
-  width: 220px;
-  /* Fixed width */
+  width: 100%;
+  /* Fluid width for grid */
   background: white;
   border: 1px solid #e2e8f0;
   border-radius: 16px;
@@ -1823,13 +1804,11 @@ body.dark .profile-section-title {
   color: #94a3b8 !important;
 }
 
-/* Scrollable Cards (Sidebar) */
+/* Scrollable Cards (Sidebar) - Now Fully Expanded */
 .scrollable-card {
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 18px;
-  /* Room for scrollbar */
+  /* max-height removed to allow full page scrolling as requested */
+  height: auto;
+  overflow: visible;
 }
 
 .scrollable-card::-webkit-scrollbar {
@@ -1854,4 +1833,35 @@ body.dark .scrollable-card::-webkit-scrollbar-thumb {
 .profile-card,
 .sidebar-card {
   box-sizing: border-box;
+}
+
+/* --- FINAL LAYOUT ADJUSTMENTS --- */
+
+/* Dash Header Text */
+.dash-title {
+  color: #0f172a;
+  transition: color 0.3s;
+}
+
+.dash-subtitle {
+  color: #64748b;
+  transition: color 0.3s;
+}
+
+body.dark .dash-title {
+  color: #f8fafc;
+}
+
+body.dark .dash-subtitle {
+  color: #94a3b8;
+}
+
+/* Force Profile Card Dark Mode Background (Overrides inline style) */
+body.dark .profile-header-bg {
+  background: #1e293b !important;
+}
+
+/* Ensure Action Card aligns in Dark Mode */
+body.dark .action-card-right {
+  background: #111827;
 }
