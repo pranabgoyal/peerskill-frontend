@@ -417,16 +417,18 @@ function fetchRandomPeers(email, baseUrl) {
 function renderPeers(list) {
   const c = document.getElementById("randomPeersList"); if (!c) return
   c.innerHTML = ""
-  if (!list.length) return c.innerHTML = "<p>No peers found.</p>"
+  if (!list.length) return c.innerHTML = "<p class='small-muted'>No peers found.</p>"
   list.forEach(p => {
     const d = document.createElement("div"); d.className = "peer-card"
     d.innerHTML = `
-           <div class="peer-main" style="display:flex;align-items:center;gap:10px;flex:1">
+           <div class="peer-main-info">
              <img src="${p.avatar || 'profile_pictures/bot.png'}" class="peer-avatar-sm">
-             <div><div class="peer-name">${p.name} <span style="font-size:0.8em">(${p.skillPoints} pts)</span></div>
-             <div class="peer-skill" style="font-size:0.8rem">Teaches: ${(p.teach || []).slice(0, 2).join(", ")}</div></div>
+             <div class="peer-details">
+                <div class="peer-name">${p.name} <span style="font-size:0.8em; color:#94a3b8; font-weight:400">(${p.skillPoints} pts)</span></div>
+                <div class="peer-teaches">Teaches: ${(p.teach || []).slice(0, 2).join(", ")}</div>
+             </div>
            </div>
-           <button class="btn btn-primary" onclick="openScheduleModal('${p.email}','${p.name}')">Connect</button>
+           <button class="btn btn-primary btn-compact" onclick="openScheduleModal('${p.email}','${p.name}')">Connect</button>
         `
     c.appendChild(d)
   })
