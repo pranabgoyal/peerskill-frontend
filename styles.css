@@ -1602,7 +1602,8 @@ body.dark .toast {
   grid-template-columns: 1.2fr 1fr;
   /* Balanced: Profile slightly wider, but Action card gets more room */
   gap: 30px;
-  align-items: stretch;
+  align-items: start;
+  /* changed from stretch to prevent empty whitespace in shorter column */
 }
 
 @media (max-width: 900px) {
